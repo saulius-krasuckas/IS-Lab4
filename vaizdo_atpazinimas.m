@@ -175,8 +175,8 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % vietoje jos pasiūlo "n".
 %
 % - ar tai dėl to, kad buvo per mažai eilučių apmokinimui,
-% - ar dėl to, kad kad naudoja ir didžiąsias, ir mažąsias raides 
-% (o programa normalizuoja jų aukščius),
+% - ar dėl to, kad kad naudojau ir didžiąsias, ir mažąsias raides 
+% (o programa normalizuoja visų jų aukščius, panašu),
 % ... šito atsakymo dar neturiu.
 %
 % 3. Konsolėje programa išspausdina:
@@ -197,10 +197,10 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % Įrašius vos didesnes reikšmes:
 % P2 = P(:,13:24);
 %
-% ... outputas atitinka inputo seką:
+% ... outputas ima atitinkti inputo seką:
 % eFLMnOpRSTVz
 %
-% ... bet vietoj "O" raidė vis tiek parenkama "n".
-% Galbūt šie du dalykai nesusiję.
+% ... bet vietoj "O" raidės vis tiek parenkama "n".
+% Galbūt šie du dalykai nesusiję. 
 % Perpratimui reikia daugiau laiko
 % (kurį suvalgė paveikslėlių gamyba).
