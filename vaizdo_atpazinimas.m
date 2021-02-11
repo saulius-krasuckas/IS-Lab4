@@ -1,38 +1,28 @@
 close all
 clear all
 clc
-%% raidþiø pavyzdþiø nuskaitymas ir poþymiø skaièiavimas
-%% read the image with hand-written characters
-pavadinimas = 'pav/5 eilutės po 12 simbolių v12.png';
+%% raidžių pavyzdžių nuskaitymas ir požymių skaičiavimas
+pavadinimas = 'pav/5 eilutės po 12 simbolių v11.png';
 pozymiai_tinklo_mokymui = pozymiai_raidems_atpazinti(pavadinimas, 5);
-%% Atpaþintuvo kûrimas
-%% Development of character recognizer
-% poþymiai ið celiø masyvo perkeliami á matricà
-% take the features from cell-type variable and save into a matrix-type variable
+%% Atpažintuvo kūrimas
+% požymiai iš celių masyvo perkeliami į matricą
 P = cell2mat(pozymiai_tinklo_mokymui);
-% sukuriama teisingø atsakymø matrica: 11 raidþiø, 8 eilutës mokymui
-% create the matrices of correct answers for each line (number of matrices = number of symbol lines)
+% sukuriama teisingų atsakymų matrica: 12 raidžių, 5 eilutės mokymui
 T = [eye(12), eye(12), eye(12), eye(12), eye(12)];
-% sukuriamas SBF tinklas duotiems P ir T sàryðiams
-% create an RBF network for classification with 13 neurons, and sigma = 1
+% sukuriamas SBF tinklas duotiems P ir T sąryšiams
 tinklas = newrb(P,T,0,1,13);
 
 
 %% Tinklo patikra | Test of the network (recognizer)
-% skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
-% estimate output of the network for unknown symbols (row, that were not used during training)
-P2 = P(:,12:22);
+% skaičiuojamas tinklo išėjimas nežinomiems požymiams
+P2 = P(:,13:24);
 Y2 = sim(tinklas, P2);
-% ieðkoma, kuriame iðëjime gauta didþiausia reikðmë
-% find which neural network output gives maximum value
+% ieškoma, kuriame išėjime gauta didžiausia reikšmė
 [a2, b2] = max(Y2);
 %% Rezultato atvaizdavimas
-%% Visualize result
-% apskaièiuosime raidþiø skaièiø - poþymiø P2 stulpeliø skaièiø
-% calculate the total number of symbols in the row
+% apskaičiuosime raidžių skaičių - požymių P2 stulpelių skaičių
 raidziu_sk = size(P2,2);
-% rezultatà saugosime kintamajame 'atsakymas'
-% we will save the result in variable 'atsakymas'
+% rezultatą saugosime kintamajame 'atsakymas'
 atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
@@ -63,32 +53,25 @@ for k = 1:raidziu_sk
             atsakymas = [atsakymas, 'z'];
     end
 end
-% pateikime rezultatà komandiniame lange
-% show the result in command window
+% pateikime rezultatą komandiniame lange
 disp(atsakymas)
 % % figure(7), text(0.1,0.5,atsakymas,'FontSize',38)
-%% þodþio "KADA" poþymiø iðskyrimas 
-%% Extract features of the test image
+%% žodžio "OpenVMS" požymių išskyrimas 
 pavadinimas = 'pav/test_OpenVMS_v3.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
 
-%% Raidþiø atpaþinimas
-%% Perform letter/symbol recognition
-% poþymiai ið celiø masyvo perkeliami á matricà
-% features from cell-variable are stored to matrix-variable
+%% Raidžių atpažinimas
+% požymiai iš celių masyvo perkeliami į matricą
     P2 = cell2mat(pozymiai_patikrai);
-% skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
-% estimating neuran network output for newly estimated features
+% skaičiuojamas tinklo išėjimas nežinomiems požymiams
 Y2 = sim(tinklas, P2);
-% ieðkoma, kuriame iðëjime gauta didþiausia reikðmë
-% searching which output gives maximum value
+% ieškoma, kuriame išėjime gauta didžiausia reikšmė
 [a2, b2] = max(Y2);
-%% Rezultato atvaizdavimas | Visualization of result
-% apskaièiuosime raidþiø skaièiø - poþymiø P2 stulpeliø skaièiø
-% calculating number of symbols - number of columns
+%% Rezultato atvaizdavimas
+% apskaičiuosime raidžių skaičių - požymių P2 stulpelių skaičių
 raidziu_sk = size(P2,2);
-% rezultatà saugosime kintamajame 'atsakymas'
+% rezultatą saugosime kintamajame 'atsakymas'
 atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
@@ -119,26 +102,25 @@ for k = 1:raidziu_sk
             atsakymas = [atsakymas, 'z'];
     end
 end
-% pateikime rezultatà komandiniame lange
+% pateikime rezultatą komandiniame lange
 % disp(atsakymas)
 figure(8), text(0.1,0.5,atsakymas,'FontSize',38), axis off
-%% þodþio "FIKCIJA" poþymiø iðskyrimas 
-%% extract features for next/another test image
+%% žodžio "FOReVer" požymių išskyrimas 
 pavadinimas = 'pav/test_Forever_v3.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
 
-%% Raidþiø atpaþinimas
-% poþymiai ið celiø masyvo perkeliami á matricà
+%% Raidžių atpažinimas
+% požymiai iš celių masyvo perkeliami į matricą
 P2 = cell2mat(pozymiai_patikrai);
-% skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
+% skaičiuojamas tinklo išėjimas nežinomiems požymiams
 Y2 = sim(tinklas, P2);
-% ieðkoma, kuriame iðëjime gauta didþiausia reikðmë
+% ieškoma, kuriame išėjime gauta didžiausia reikšmė
 [a2, b2] = max(Y2);
 %% Rezultato atvaizdavimas
-% apskaièiuosime raidþiø skaièiø - poþymiø P2 stulpeliø skaièiø
+% apskaičiuosime raidžių skaičių - požymių P2 stulpelių skaičių
 raidziu_sk = size(P2,2);
-% rezultatà saugosime kintamajame 'atsakymas'
+% rezultatą saugosime kintamajame 'atsakymas'
 atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
@@ -169,6 +151,50 @@ for k = 1:raidziu_sk
             atsakymas = [atsakymas, 'z'];
     end
 end
-% pateikime rezultatà komandiniame lange
+% pateikime rezultatą komandiniame lange
 % disp(atsakymas)
 figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
+
+% Ranka rašytas tekstas: OpenVMS FORever
+% Pr. atpažintas testas: npenVMS FORever
+
+%% Išvados:
+%
+% 0. Prireikė 12-kos versijų apmokymo failo 
+% ir po 3 versijas testinių failų, 
+% kol programa pradėjo daugiau mažiau veikti. : (
+%
+% 1. Programa žodyje "OpenVMS" neatpažįsta raidės "O",
+% vietoje jos pasiūlo "n".
+%
+% - ar tai dėl to, kad buvo per mažai eilučių apmokinimui,
+% - ar dėl to, kad kad naudoja ir didžiąsias, ir mažąsias raides 
+% (o programa normalizuoja jų aukščius),
+% ... šito atsakymo dar neturiu.
+%
+% 2. Prieš tai programa išspausdina:
+% zeFLMnOTRST
+%
+% ... vietoje mano užduotos sekos apmokymui:
+% eFLMnOpRSTVz
+%
+% - kodėl joje 11 elementų vietoj 12?
+% - kodėl "z" atsiranda priekyje?
+% - kodėl vietoj "p" sekoje atsiranda "T"?
+% ... man kol kas nežinia.
+%
+% Panašu, kad šis dydis priklauso nuo šios eilutės:
+% P2 = P(:,12:22);
+%
+% Manau, kad ji grąžina per mažai elementų.
+% Vietoj įrašius didesnes reikšmes:
+% P2 = P(:,13:24);
+%
+% ... outputas gražesnis:
+% NEWRB, neurons = 0, MSE = 0.0763889
+% VzeFLMnOpRST
+%
+% ... bet "O" raidė vis tiek lieka sumaišyta su "n".
+% Galbūt tai nesusiję.
+% Šitam perprasti reikia daugiau laiko
+% (kurį suvalgė paveikslėlių gamyba).
