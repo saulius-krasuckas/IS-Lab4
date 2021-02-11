@@ -17,6 +17,7 @@ T = [eye(11), eye(11), eye(11), eye(11), eye(11), eye(11), eye(11), eye(11)];
 % create an RBF network for classification with 13 neurons, and sigma = 1
 tinklas = newrb(P,T,0,1,13);
 
+
 %% Tinklo patikra | Test of the network (recognizer)
 % skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
 % estimate output of the network for unknown symbols (row, that were not used during training)
@@ -69,6 +70,7 @@ disp(atsakymas)
 pavadinimas = 'test_kada.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
+
 %% Raidþiø atpaþinimas
 %% Perform letter/symbol recognition
 % poþymiai ið celiø masyvo perkeliami á matricà
@@ -120,6 +122,7 @@ figure(8), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 pavadinimas = 'test_fikcija.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
+
 %% Raidþiø atpaþinimas
 % poþymiai ið celiø masyvo perkeliami á matricà
 P2 = cell2mat(pozymiai_patikrai);
@@ -162,3 +165,7 @@ end
 % disp(atsakymas)
 figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzg2NzkyOTY3XX0=
+-->
