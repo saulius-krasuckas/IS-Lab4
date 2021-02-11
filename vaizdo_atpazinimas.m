@@ -204,3 +204,6 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % Galbūt šie du dalykai nesusiję.
 % Perpratimui reikia daugiau laiko
 % (kurį suvalgė paveikslėlių gamyba).
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExMjI4NjQ3NzVdfQ==
+-->
