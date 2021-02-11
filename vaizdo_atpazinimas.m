@@ -160,11 +160,11 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 
 %% Išvados:
 %
-% 0. Prireikė 12-kos versijų apmokymo failo 
+% 1. Prireikė 12-kos versijų apmokymo failo 
 % ir po 3 versijas testinių failų, 
 % kol programa pradėjo daugiau mažiau veikti. : (
 %
-% 1. Programa žodyje "OpenVMS" neatpažįsta raidės "O",
+% 2. Programa žodyje "OpenVMS" neatpažįsta raidės "O",
 % vietoje jos pasiūlo "n".
 %
 % - ar tai dėl to, kad buvo per mažai eilučių apmokinimui,
@@ -172,7 +172,7 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % (o programa normalizuoja jų aukščius),
 % ... šito atsakymo dar neturiu.
 %
-% 2. Prieš tai programa išspausdina:
+% 3. Prieš tai programa išspausdina:
 % zeFLMnOTRST
 %
 % ... vietoje mano užduotos sekos apmokymui:
@@ -186,8 +186,8 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % Panašu, kad šis dydis priklauso nuo šios eilutės:
 % P2 = P(:,12:22);
 %
-% Manau, kad ji grąžina per mažai elementų.
-% Vietoj įrašius didesnes reikšmes:
+% Manau, kad ji grąžina per mažai elementų (11).
+% Įrašius vos didesnes reikšmes:
 % P2 = P(:,13:24);
 %
 % ... outputas gražesnis:
