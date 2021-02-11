@@ -3,8 +3,8 @@ clear all
 clc
 %% raidþiø pavyzdþiø nuskaitymas ir poþymiø skaièiavimas
 %% read the image with hand-written characters
-pavadinimas = 'train_data.png';
-pozymiai_tinklo_mokymui = pozymiai_raidems_atpazinti(pavadinimas, 8);
+pavadinimas = 'pav/5 eilutės po 12 simbolių v12.png';
+pozymiai_tinklo_mokymui = pozymiai_raidems_atpazinti(pavadinimas, 5);
 %% Atpaþintuvo kûrimas
 %% Development of character recognizer
 % poþymiai ið celiø masyvo perkeliami á matricà
@@ -12,7 +12,7 @@ pozymiai_tinklo_mokymui = pozymiai_raidems_atpazinti(pavadinimas, 8);
 P = cell2mat(pozymiai_tinklo_mokymui);
 % sukuriama teisingø atsakymø matrica: 11 raidþiø, 8 eilutës mokymui
 % create the matrices of correct answers for each line (number of matrices = number of symbol lines)
-T = [eye(11), eye(11), eye(11), eye(11), eye(11), eye(11), eye(11), eye(11)];
+T = [eye(12), eye(12), eye(12), eye(12), eye(12)];
 % sukuriamas SBF tinklas duotiems P ir T sàryðiams
 % create an RBF network for classification with 13 neurons, and sigma = 1
 tinklas = newrb(P,T,0,1,13);
@@ -38,27 +38,29 @@ for k = 1:raidziu_sk
     switch b2(k)
         case 1
             % the symbol here should be the same as written first symbol in your image
-            atsakymas = [atsakymas, 'A'];
+            atsakymas = [atsakymas, 'e'];
         case 2
-            atsakymas = [atsakymas, 'B'];
-        case 3
-            atsakymas = [atsakymas, 'C'];
-        case 4
-            atsakymas = [atsakymas, 'D'];
-        case 5
-            atsakymas = [atsakymas, 'E'];
-        case 6
             atsakymas = [atsakymas, 'F'];
+        case 3
+            atsakymas = [atsakymas, 'L'];
+        case 4
+            atsakymas = [atsakymas, 'M'];
+        case 5
+            atsakymas = [atsakymas, 'n'];
+        case 6
+            atsakymas = [atsakymas, 'O'];
         case 7
-            atsakymas = [atsakymas, 'G'];
+            atsakymas = [atsakymas, 'p'];
         case 8
-            atsakymas = [atsakymas, 'H'];
+            atsakymas = [atsakymas, 'R'];
         case 9
-            atsakymas = [atsakymas, 'I'];
+            atsakymas = [atsakymas, 'S'];
         case 10
-            atsakymas = [atsakymas, 'K'];
+            atsakymas = [atsakymas, 'T'];
         case 11
-            atsakymas = [atsakymas, 'J'];
+            atsakymas = [atsakymas, 'V'];
+        case 12
+            atsakymas = [atsakymas, 'z'];
     end
 end
 % pateikime rezultatà komandiniame lange
@@ -67,7 +69,7 @@ disp(atsakymas)
 % % figure(7), text(0.1,0.5,atsakymas,'FontSize',38)
 %% þodþio "KADA" poþymiø iðskyrimas 
 %% Extract features of the test image
-pavadinimas = 'test_kada.png';
+pavadinimas = 'pav/test_OpenVMS_v3.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
 
@@ -75,7 +77,7 @@ pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 %% Perform letter/symbol recognition
 % poþymiai ið celiø masyvo perkeliami á matricà
 % features from cell-variable are stored to matrix-variable
-P2 = cell2mat(pozymiai_patikrai);
+    P2 = cell2mat(pozymiai_patikrai);
 % skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
 % estimating neuran network output for newly estimated features
 Y2 = sim(tinklas, P2);
@@ -91,27 +93,30 @@ atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
         case 1
-            atsakymas = [atsakymas, 'A'];
+            % the symbol here should be the same as written first symbol in your image
+            atsakymas = [atsakymas, 'e'];
         case 2
-            atsakymas = [atsakymas, 'B'];
-        case 3
-            atsakymas = [atsakymas, 'C'];
-        case 4
-            atsakymas = [atsakymas, 'D'];
-        case 5
-            atsakymas = [atsakymas, 'E'];
-        case 6
             atsakymas = [atsakymas, 'F'];
+        case 3
+            atsakymas = [atsakymas, 'L'];
+        case 4
+            atsakymas = [atsakymas, 'M'];
+        case 5
+            atsakymas = [atsakymas, 'n'];
+        case 6
+            atsakymas = [atsakymas, 'O'];
         case 7
-            atsakymas = [atsakymas, 'G'];
+            atsakymas = [atsakymas, 'p'];
         case 8
-            atsakymas = [atsakymas, 'H'];
+            atsakymas = [atsakymas, 'R'];
         case 9
-            atsakymas = [atsakymas, 'I'];
+            atsakymas = [atsakymas, 'S'];
         case 10
-            atsakymas = [atsakymas, 'K'];
+            atsakymas = [atsakymas, 'T'];
         case 11
-            atsakymas = [atsakymas, 'J'];
+            atsakymas = [atsakymas, 'V'];
+        case 12
+            atsakymas = [atsakymas, 'z'];
     end
 end
 % pateikime rezultatà komandiniame lange
@@ -119,7 +124,7 @@ end
 figure(8), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 %% þodþio "FIKCIJA" poþymiø iðskyrimas 
 %% extract features for next/another test image
-pavadinimas = 'test_fikcija.png';
+pavadinimas = 'pav/test_Forever_v3.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
 
@@ -138,34 +143,32 @@ atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
         case 1
-            atsakymas = [atsakymas, 'A'];
+            % the symbol here should be the same as written first symbol in your image
+            atsakymas = [atsakymas, 'e'];
         case 2
-            atsakymas = [atsakymas, 'B'];
-        case 3
-            atsakymas = [atsakymas, 'C'];
-        case 4
-            atsakymas = [atsakymas, 'D'];
-        case 5
-            atsakymas = [atsakymas, 'E'];
-        case 6
             atsakymas = [atsakymas, 'F'];
+        case 3
+            atsakymas = [atsakymas, 'L'];
+        case 4
+            atsakymas = [atsakymas, 'M'];
+        case 5
+            atsakymas = [atsakymas, 'n'];
+        case 6
+            atsakymas = [atsakymas, 'O'];
         case 7
-            atsakymas = [atsakymas, 'G'];
+            atsakymas = [atsakymas, 'p'];
         case 8
-            atsakymas = [atsakymas, 'H'];
+            atsakymas = [atsakymas, 'R'];
         case 9
-            atsakymas = [atsakymas, 'I'];
+            atsakymas = [atsakymas, 'S'];
         case 10
-            atsakymas = [atsakymas, 'K'];
+            atsakymas = [atsakymas, 'T'];
         case 11
-            atsakymas = [atsakymas, 'J'];
+            atsakymas = [atsakymas, 'V'];
+        case 12
+            atsakymas = [atsakymas, 'z'];
     end
 end
 % pateikime rezultatà komandiniame lange
 % disp(atsakymas)
 figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
-
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMTcxMTA5M119
--->
