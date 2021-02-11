@@ -155,6 +155,13 @@ end
 % disp(atsakymas)
 figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 
+% Apmokymo pav.:
+%   'pav/5 eilutės po 12 simbolių v11.png'
+% Apmokymo tekstas: e F L M n O p R S T V z
+%
+% Atpažinimo pav.: 
+%   'pav/test_OpenVMS_v3.png'
+%   'pav/test_Forever_v3.png'
 % Ranka rašytas tekstas: OpenVMS FORever
 % Pr. atpažintas testas: npenVMS FORever
 
@@ -172,29 +179,28 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % (o programa normalizuoja jų aukščius),
 % ... šito atsakymo dar neturiu.
 %
-% 3. Prieš tai programa išspausdina:
-% zeFLMnOTRST
+% 3. Konsolėje programa išspausdina:
+% NEWRB, neurons = 0, MSE = 0.0763889
+% zeFLMnOpRST
 %
 % ... vietoje mano užduotos sekos apmokymui:
 % eFLMnOpRSTVz
 %
 % - kodėl joje 11 elementų vietoj 12?
 % - kodėl "z" atsiranda priekyje?
-% - kodėl vietoj "p" sekoje atsiranda "T"?
 % ... man kol kas nežinia.
 %
-% Panašu, kad šis dydis priklauso nuo šios eilutės:
+% Panašu, kad ilgis priklauso nuo šios eilutės:
 % P2 = P(:,12:22);
 %
 % Manau, kad ji grąžina per mažai elementų (11).
 % Įrašius vos didesnes reikšmes:
 % P2 = P(:,13:24);
 %
-% ... outputas gražesnis:
-% NEWRB, neurons = 0, MSE = 0.0763889
-% VzeFLMnOpRST
+% ... outputas atitinka inputo seką:
+% eFLMnOpRSTVz
 %
-% ... bet "O" raidė vis tiek lieka sumaišyta su "n".
-% Galbūt tai nesusiję.
-% Šitam perprasti reikia daugiau laiko
+% ... bet vietoj "O" raidė vis tiek parenkama "n".
+% Galbūt šie du dalykai nesusiję.
+% Perpratimui reikia daugiau laiko
 % (kurį suvalgė paveikslėlių gamyba).
