@@ -162,8 +162,8 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % Atpažinimo pav.: 
 %   'pav/test_OpenVMS_v3.png'
 %   'pav/test_Forever_v3.png'
-% Ranka rašytas tekstas: OpenVMS FORever
-% Pr. atpažintas testas: npenVMS FORever
+% Ranka rašytas tekstas: OpenVMS FOReVer
+% Pr. atpažintas testas: npenVMS FOReVer
 
 %% Išvados:
 %
@@ -197,7 +197,7 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 % Įrašius vos didesnes reikšmes:
 % P2 = P(:,13:24);
 %
-% ... outputas ima atitinkti inputo seką:
+% ... outputas ima atitikti inputo seką:
 % eFLMnOpRSTVz
 %
 % ... bet vietoj "O" raidės vis tiek parenkama "n".
