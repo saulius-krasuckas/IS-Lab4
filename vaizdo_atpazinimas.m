@@ -167,5 +167,5 @@ figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg2NzkyOTY3XX0=
+eyJoaXN0b3J5IjpbLTUyMTcxMTA5M119
 -->
